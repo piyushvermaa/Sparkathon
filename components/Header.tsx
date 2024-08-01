@@ -68,7 +68,7 @@ const Header = () => {
 
       <div className="hidden md:flex space-x-5 mt-5 md:mt-0">
         <Link
-          href="/"
+          href="/departments"
           className="hidden xl:flex text-white font-bold items-center space-x-2 text-sm"
         >
           <Grid2X2 size={20} />
@@ -76,7 +76,7 @@ const Header = () => {
         </Link>
 
         <Link
-          href="/"
+          href="/services"
           className="hidden xl:flex text-white font-bold items-center space-x-2 text-sm"
         >
           <LayoutGrid size={20} />
@@ -84,7 +84,7 @@ const Header = () => {
         </Link>
 
         <Link
-          href="/"
+          href="/wishlist"
           className="flex text-white font-bold items-center space-x-2 text-sm"
         >
           <Heart size={20} />
@@ -95,7 +95,7 @@ const Header = () => {
         </Link>
 
         <Link
-          href="/"
+          href="/signin"
           className="flex text-white font-bold items-center space-x-2 text-sm"
         >
           <User size={20} />
