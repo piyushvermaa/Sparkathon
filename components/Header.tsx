@@ -54,7 +54,9 @@ const Header = () => {
           className="flex-1 px-4 rounded-l-full outline-none placeholder:text-sm text-black"
         />
         <button type="submit">
-          <Search className="rounded-full h-10 w-10 px-2 bg-yellow-400 cursor-pointer" />
+          <Search className="rounded-full h-10 w-10 px-2 bg-yellow-400 cursor-pointer" 
+          aria-placeholder="Search everything "
+          />
         </button>
       </form>
       <button

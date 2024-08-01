@@ -1,9 +1,12 @@
-import Image from "next/image";
+import Landing from "@/components/Landing";
+import TopBannerCarousel from "@/components/ProductCarousel";
+
 
 export default function Home() {
   return (
     <div>
-      hello
+      <TopBannerCarousel/>
+      <Landing/>
     </div>
   );
 }
