@@ -55,7 +55,7 @@ const Signinpage = () => {
                 </button>
               </div>
 
-              <p className="mt-8 text-center text-sm text-gray-800">Don't have an account <Link href="/signup" className="text-blue-600 font-semibold hover:underline ml-1 whitespace-nowrap">Register here</Link></p>
+              <p className="mt-8 text-center text-sm text-gray-800">Don&apos;t have an account <Link href="/signup" className="text-blue-600 font-semibold hover:underline ml-1 whitespace-nowrap">Register here</Link></p>
             </form>
           </div>
           <div className="lg:h-[400px] md:h-[300px] max-md:mt-8">
