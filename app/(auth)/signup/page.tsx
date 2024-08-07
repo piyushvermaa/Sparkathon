@@ -1,8 +1,7 @@
-import { EyeIcon } from 'lucide-react'
 import Link from 'next/link'
 import React from 'react'
 
-const Signinpage = () => {
+const Signup = () => {
   return (
     <div className="font-sans">
       <div className="min-h-[85vh] flex flex-col items-center justify-center py-6 px-4">
@@ -10,8 +9,8 @@ const Signinpage = () => {
           <div className="border border-gray-300 rounded-lg p-6 max-w-md shadow-[0_2px_22px_-4px_rgba(93,96,127,0.2)] max-md:mx-auto">
             <form className="space-y-4">
               <div className="mb-8">
-                <h3 className="text-gray-800 text-3xl font-extrabold">Sign in</h3>
-                <p className="text-gray-500 text-sm mt-4 leading-relaxed">Sign in to your account and explore a world of possibilities. Your journey begins here.</p>
+                <h3 className="text-gray-800 text-3xl font-extrabold">Create an Account</h3>
+                <p className="text-gray-500 text-sm mt-4 leading-relaxed">Join us today! Start your journey with us.</p>
               </div>
 
               <div>
@@ -25,6 +24,16 @@ const Signinpage = () => {
                 </div>
               </div>
               <div>
+                <label className="text-gray-800 text-sm mb-2 block">Email Address</label>
+                <div className="relative flex items-center">
+                  <input name="email" type="email" required className="w-full text-sm text-gray-800 border border-gray-300 px-4 py-3 rounded-lg outline-blue-600" placeholder="Enter email address" />
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="#bbb" stroke="#bbb" className="w-[18px] h-[18px] absolute right-4" viewBox="0 0 24 24">
+                    <circle cx="12" cy="12" r="10" data-original="#000000"></circle>
+                    <path d="M10 14H7a3 3 0 0 1-3-3V8a3 3 0 0 1 3-3h3V3a1 1 0 0 1 2 0v2h3a3 3 0 0 1 3 3v3a3 3 0 0 1-3 3h-3v2a1 1 0 0 1-2 0v-2zm5-7h-2v3a1 1 0 0 1-2 0V7H9a1 1 0 0 1 0-2h2V4a1 1 0 0 1 2 0v1h2a1 1 0 0 1 0 2z" data-original="#000000"></path>
+                  </svg>
+                </div>
+              </div>
+              <div>
                 <label className="text-gray-800 text-sm mb-2 block">Password</label>
                 <div className="relative flex items-center">
                   <input name="password" type="password" required className="w-full text-sm text-gray-800 border border-gray-300 px-4 py-3 rounded-lg outline-blue-600" placeholder="Enter password" />
@@ -34,32 +43,17 @@ const Signinpage = () => {
                 </div>
               </div>
 
-              <div className="flex flex-wrap items-center justify-between gap-4">
-                <div className="flex items-center">
-                  <input id="remember-me" name="remember-me" type="checkbox" className="h-4 w-4 shrink-0 text-blue-600 focus:ring-blue-500 border-gray-300 rounded" />
-                  <label htmlFor="remember-me" className="ml-3 block text-sm text-gray-800">
-                    Remember me
-                  </label>
-                </div>
-
-                <div className="text-sm">
-                  <a href="javascript:void(0);" className="text-blue-600 hover:underline font-semibold">
-                    Forgot your password?
-                  </a>
-                </div>
-              </div>
-
               <div className="mt-8">
                 <button type="button" className="w-full shadow-xl py-3 px-4 text-sm tracking-wide rounded-lg text-white bg-blue-600 hover:bg-blue-700 focus:outline-none">
-                  Log in
+                  Sign Up
                 </button>
               </div>
 
-              <p className="mt-8 text-center text-sm text-gray-800">Don't have an account <Link href="/signup" className="text-blue-600 font-semibold hover:underline ml-1 whitespace-nowrap">Register here</Link></p>
+              <p className="mt-8 text-center text-sm text-gray-800">Already have an account? <Link href="/signin" className="text-blue-600 font-semibold hover:underline ml-1 whitespace-nowrap">Log in here</Link></p>
             </form>
           </div>
           <div className="lg:h-[400px] md:h-[300px] max-md:mt-8">
-            <img src="https://readymadeui.com/login-image.webp" className="w-full h-full max-md:w-4/5 mx-auto block object-cover" alt="Dining Experience" />
+            <img src="https://readymadeui.com/login-image.webp" className="w-full h-full max-md:w-4/5 mx-auto block object-cover" alt="Signup Experience" />
           </div>
         </div>
       </div>
@@ -67,4 +61,4 @@ const Signinpage = () => {
   )
 }
 
-export default Signinpage
+export default Signup
