@@ -1,20 +1,19 @@
 "use client";
 
-import { useState } from "react";
 import {
   Grid2X2,
   Heart,
   LayoutGrid,
+  Menu,
   Search,
   ShoppingCart,
   User,
-  Menu,
   X,
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { FormEvent } from "react";
+import { FormEvent, useState } from "react";
 
 const Header = () => {
   const router = useRouter();
