@@ -19,6 +19,7 @@ const nextConfig = {
             hostname: 'tinyurl.com',
           },
         ],
+        domains: ['images.unsplash.com'],
     },
 };
 
