@@ -2,6 +2,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { ArrowLeftIcon } from "lucide-react";
 
 const services = [
   {
@@ -40,6 +41,12 @@ const Services: React.FC = () => {
   return (
     <div className="min-h-screen bg-gray-100 py-16">
       <div className="container mx-auto px-4">
+      <Link href="/">
+          <div className="text-blue-600 hover:underline flex items-center mb-8">
+            <ArrowLeftIcon size={18} className="mr-2" />
+             Explore more products
+          </div>
+        </Link>
         <h1 className="text-5xl font-extrabold text-gray-900 mb-12 text-center">
           Our Services
         </h1>
