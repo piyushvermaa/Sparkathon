@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, FormEvent } from "react";
 import {
   Grid2X2,
   Heart,
@@ -10,27 +10,75 @@ import {
   User,
   Menu,
   X,
+  Mic,
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { FormEvent } from "react";
+
+// Extend the Window interface to include webkitSpeechRecognition
+interface ExtendedWindow extends Window {
+  webkitSpeechRecognition: any; // Define webkitSpeechRecognition as any for simplicity
+}
 
 const Header = () => {
   const router = useRouter();
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [inputValue, setInputValue] = useState<string>("");
+  const [recognitionActive, setRecognitionActive] = useState(false);
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const input = e.currentTarget.input.value;
-    router.push(`/search?q=${input}`);
+    router.push(`/search?q=${inputValue}`);
+  };
+
+  const startVoiceRecognition = () => {
+    if ("webkitSpeechRecognition" in window) {
+      const { webkitSpeechRecognition }: ExtendedWindow = window as ExtendedWindow;
+      const recognition = new webkitSpeechRecognition();
+
+      recognition.continuous = false;
+      recognition.lang = "en-US";
+      recognition.interimResults = false;
+
+      recognition.onstart = () => {
+        setRecognitionActive(true);
+        console.log("Voice recognition started");
+      };
+
+      recognition.onresult = (event: any) => {
+        const transcript = event.results[0][0].transcript;
+        console.log("Recognized Text:", transcript); // Log recognized text
+        setInputValue(transcript);
+        router.push(`/search?q=${transcript}`);
+      };
+
+      recognition.onerror = (event: any) => {
+        console.error("Recognition Error:", event.error);
+      
+        if (event.error === 'network') {
+          alert("Network error occurred. Please check your internet connection and try again.");
+        } else {
+          alert(`An error occurred during speech recognition: ${event.error}`);
+        }
+      };
+
+      recognition.onend = () => {
+        setRecognitionActive(false);
+        console.log("Voice recognition ended");
+      };
+
+      recognition.start();
+    } else {
+      alert("Sorry, your browser doesn't support voice recognition.");
+    }
   };
 
   return (
-    <div className="flex flex-row-reverse md:flex-row items-center bg-walmart px-5 md:px-10 py-7 space-x-5 relative">
-      <div className="flex justify-between w-fit md:w-auto mb-5 md:mb-0">
+    <div className="flex flex-row-reverse md:flex-row items-center bg-walmart w-full px-5 md:px-10 py-7 space-x-5 relative">
+      <div className="flex justify-between w-full md:w-auto mb-5 md:mb-0">
         <Link href="/" className="flex items-center">
-          <div className="">
+          <div>
             <Image
               src="https://i.imgur.com/5V4wehM.png"
               alt="Logo"
@@ -38,7 +86,6 @@ const Header = () => {
               height={150}
               className="hidden md:flex"
             />
-            
           </div>
         </Link>
       </div>
@@ -51,14 +98,26 @@ const Header = () => {
           type="text"
           name="input"
           placeholder="Search Everything..."
+          value={inputValue}
+          onChange={(e) => setInputValue(e.target.value)}
           className="flex-1 px-4 rounded-l-full outline-none placeholder:text-sm text-black"
         />
+        <button type="button" onClick={startVoiceRecognition}>
+          <Mic
+            className={`rounded-full h-10 w-10 px-2 cursor-pointer ${
+              recognitionActive ? "bg-yellow-500" : "bg-yellow-400"
+            }`}
+            aria-label="Voice Search"
+          />
+        </button>
         <button type="submit">
-          <Search className="rounded-full h-10 w-10 px-2 bg-yellow-400 cursor-pointer" 
-          aria-placeholder="Search everything "
+          <Search
+            className="rounded-full h-10 w-10 px-2 bg-yellow-400 cursor-pointer"
+            aria-label="Search"
           />
         </button>
       </form>
+
       <button
         className="md:hidden text-white"
         onClick={() => setSidebarOpen(!sidebarOpen)}
@@ -139,14 +198,15 @@ const Header = () => {
                   className="py-2"
                 />
               </Link>
-              <button className="text-white"
+              <button
+                className="text-white"
                 onClick={() => setSidebarOpen(false)}
               >
-              <X size={30} />
+                <X size={30} />
               </button>
             </div>
             <Link
-              href="/"
+              href="/departments"
               className="flex items-center text-white border-b-2 pb-2 border-white/40 font-bold space-x-2 text-lg"
             >
               <Grid2X2 size={20} />
@@ -154,7 +214,7 @@ const Header = () => {
             </Link>
 
             <Link
-              href="/"
+              href="/services"
               className="flex items-center text-white font-bold border-b-2 pb-2 border-white/40 space-x-2 text-lg"
             >
               <LayoutGrid size={20} />
@@ -162,7 +222,7 @@ const Header = () => {
             </Link>
 
             <Link
-              href="/"
+              href="/wishlist"
               className="flex items-center text-white font-bold border-b-2 pb-2 border-white/40 space-x-2 text-lg"
             >
               <Heart size={20} />
@@ -173,7 +233,7 @@ const Header = () => {
             </Link>
 
             <Link
-              href="/"
+              href="/signin"
               className="flex items-center text-white font-bold border-b-2 pb-2 border-white/40 space-x-2 text-lg"
             >
               <User size={20} />
