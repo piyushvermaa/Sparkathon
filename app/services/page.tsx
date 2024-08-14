@@ -1,39 +1,39 @@
 "use client";
-import React from "react";
+import { ArrowLeftIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowLeftIcon } from "lucide-react";
+import React from "react";
 
 const services = [
   {
     id: 1,
     title: "Fast Shipping",
     description: "Enjoy fast and reliable shipping on all orders. We ensure your items reach you in record time with our optimized logistics network.",
-    image: "https://images.unsplash.com/photo-1600900683885-d57d98f05862?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MXwzNjUyOXwwfDF8c2VhcmNofDJ8fGZhc3QlMjNoaXBwaW5nfGVufDE2Njg3MDQ4Nw&ixlib=rb-1.2.1&q=80&w=1080",
+    image: "https://scontent.fmaa8-1.fna.fbcdn.net/v/t1.6435-9/98478488_3144115745641345_7891158587060256768_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=0327a3&_nc_ohc=TzNSDaaZco0Q7kNvgH523tn&_nc_ht=scontent.fmaa8-1.fna&oh=00_AYDaDR8uNqbeh2-w451xeUFE3n8a19N9ZF0XEEarTs0xKg&oe=66E44E0B",
   },
   {
     id: 2,
     title: "24/7 Customer Support",
     description: "Our dedicated support team is available around the clock to assist you with any inquiries or issues. We're here to help you anytime.",
-    image: "https://images.unsplash.com/photo-1604672296106-55f86d7a0e04?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MXwzNjUyOXwwfDF8c2VhcmNofDJ8fDI0LzddIGN1c3RvbWVyIHN1cHBvcnR8ZW58MTY2ODcwNjM3&ixlib=rb-1.2.1&q=80&w=1080",
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQelwxLqZdW9tSbQdraGD32C44ZbDsVEFP3mw&s0",
   },
   {
     id: 3,
     title: "Easy Returns",
     description: "We offer a hassle-free returns process for all products. If you're not satisfied with your purchase, return it easily within 30 days.",
-    image: "https://images.unsplash.com/photo-1562886782-b8b5cda8f47d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MXwzNjUyOXwwfDF8c2VhcmNofDJ8fGVhc3ktcmV0dXJufGVufDE2Njg3MDQ4Nw&ixlib=rb-1.2.1&q=80&w=1080",
+    image: "https://assets.petco.com/petco/image/upload/f_auto,q_auto:best,dpr_2.0/fasteasyreturns-narvar_517x190",
   },
   {
     id: 4,
     title: "Secure Payment Options",
     description: "We provide multiple secure payment options to ensure your transactions are safe and convenient. Choose the payment method that suits you best.",
-    image: "https://images.unsplash.com/photo-1605702787312-c7b7f5cb0f6a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MXwzNjUyOXwwfDF8c2VhcmNofDJ8fGJhbmtpbmclMjBkcml2ZWJldHxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&q=80&w=1080",
+    image: "https://www.cio.com/wp-content/uploads/2023/05/visa-100339527-orig.jpg?quality=50&strip=all&w=1024",
   },
   {
     id: 5,
     title: "Product Warranties",
     description: "All products come with warranties to ensure peace of mind. We stand behind the quality of our products and offer support for any issues.",
-    image: "https://images.unsplash.com/photo-1593721725376-39c40922d306?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MXwzNjUyOXwwfDF8c2VhcmNofDJ8fG1vYmlsZWFyaW8lMjBhbmdsZXxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&q=80&w=1080",
+    image: "https://warrantyvalet.com/theme-assets/images/blog/brand/1690608703-walmart.jpg",
   },
 ];
 
