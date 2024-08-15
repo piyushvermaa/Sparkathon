@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, FormEvent } from "react";
+import { useState, FormEvent, useEffect } from "react";
 import {
   Grid2X2,
   Heart,
@@ -26,10 +26,16 @@ const Header = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [inputValue, setInputValue] = useState<string>("");
   const [recognitionActive, setRecognitionActive] = useState(false);
+  
+  const [username, setUser] = useState<string | undefined>('Sign in');
+
+  useEffect(()=>{
+    if(localStorage.getItem('name')) setUser(localStorage.getItem('name')+"");
+  },[router]);
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    router.push(`/search?q=${inputValue}`);
+    router.push(`/${inputValue}`);
   };
 
   const startVoiceRecognition = () => {
@@ -47,10 +53,12 @@ const Header = () => {
       };
 
       recognition.onresult = (event: any) => {
-        const transcript = event.results[0][0].transcript;
+        var transcript = event.results[0][0].transcript;
+        transcript = transcript.substring(0,transcript.length-1);
         console.log("Recognized Text:", transcript); // Log recognized text
         setInputValue(transcript);
-        router.push(`/search?q=${transcript}`);
+
+        router.push(`/${transcript}`);
       };
 
       recognition.onerror = (event: any) => {
@@ -159,7 +167,7 @@ const Header = () => {
         >
           <User size={20} />
           <div>
-            <p className="text-xs font-extralight">Sign In</p>
+            <p className="text-xs font-extralight"> {username} </p>
             <p>Account</p>
           </div>
         </Link>
